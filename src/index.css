@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Parisienne&display=swap');
+
+@font-face {
+  font-family: 'Drip October';
+  src: local('Impact');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-white text-gray-800 font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-normal;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+  
+  /* Performance optimizations */
+  img {
+    content-visibility: auto;
+  }
+  
+  /* Add will-change for elements that will animate */
+  .will-animate {
+    will-change: transform, opacity;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply w-full max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-normal mb-6 md:mb-10 font-heading;
+  }
+
+  .section-subheading {
+    @apply text-xl md:text-2xl font-light mb-6 text-gray-600;
+  }
+
+  /* Script heading */
+  .script-heading {
+    @apply font-script text-4xl md:text-5xl lg:text-6xl mb-2;
+    color: #D4AF37; /* Rich gold color */
+  }
+
+  /* Drip heading */
+  .drip-heading {
+    @apply font-drip text-4xl md:text-5xl lg:text-6xl mb-2;
+  }
+
+  .scrolling-text {
+    @apply whitespace-nowrap overflow-hidden;
+    animation: scrollText 15s linear infinite alternate;
+  }
+
+  /* Tilted card */
+  .tilted-card {
+    @apply relative transform rotate-[-5deg] shadow-xl transition-all duration-500 hover:rotate-[-2deg] hover:shadow-2xl;
+  }
+
+  .tilted-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-transparent hover:bg-black text-black hover:text-white px-6 py-3 font-medium transition-colors duration-200 uppercase text-sm tracking-wider border border-black;
+  }
+
+  .btn-outline {
+    @apply border border-black text-black hover:bg-black hover:text-white px-6 py-3 font-medium transition-colors duration-200 uppercase text-sm tracking-wider;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-100 text-black px-6 py-3 font-medium transition-colors duration-200 uppercase text-sm tracking-wider;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply relative font-medium text-black hover:text-gray-600 transition-colors duration-200 uppercase text-sm tracking-wider;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-px bg-black scale-x-0 transition-transform duration-200 origin-bottom-left;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+  
+  /* Gallery and images */
+  .gallery-image {
+    @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+  }
+  
+  .full-width-image {
+    @apply w-full h-[70vh] md:h-[80vh] object-cover;
+  }
+  
+  .gallery-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .gallery-item {
+    @apply relative overflow-hidden aspect-square;
+  }
+  
+  /* Cards and content blocks */
+  .portfolio-card {
+    @apply relative overflow-hidden aspect-square group;
+  }
+  
+  .portfolio-card-image {
+    @apply w-full h-full object-cover transition-transform duration-700 group-hover:scale-110;
+  }
+  
+  .portfolio-card-overlay {
+    @apply absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white;
+  }
+  
+  .counter-block {
+    @apply flex flex-col items-center justify-center text-center p-8;
+  }
+  
+  .counter-number {
+    @apply text-5xl md:text-6xl font-heading mb-2;
+  }
+  
+  .counter-label {
+    @apply text-sm uppercase tracking-wider;
+  }
+  
+  .workshop-card {
+    @apply relative overflow-hidden bg-white border border-gray-200;
+  }
+  
+  .portfolio-section {
+    @apply py-12 md:py-20;
+  }
+  
+  .newsletter-form {
+    @apply flex flex-col md:flex-row gap-4 mt-6;
+  }
+  
+  /* Footer */
+  .footer-heading {
+    @apply text-lg font-medium mb-4 uppercase tracking-wider;
+  }
+  
+  .footer-link {
+    @apply text-gray-600 hover:text-black transition-colors duration-200;
+  }
+  
+  .social-icon {
+    @apply w-5 h-5 text-gray-600 hover:text-black transition-colors duration-200;
+  }
+
+  /* About section styled content */
+  .about-content {
+    @apply flex flex-col gap-6;
+  }
+
+  .about-content p {
+    @apply text-gray-700;
+  }
+
+  .highlight-text {
+    @apply font-medium text-black;
+  }
+  
+  /* Animation classes */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .slide-up-delay {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease-out 0.3s forwards;
+  }
+  
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Animation keyframes */
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Add preload hints for critical resources */
+.preload-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
