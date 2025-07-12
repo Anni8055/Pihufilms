@@ -1,25 +1,17 @@
-import { createRoot } from 'react-dom/client';
-import { StrictMode, lazy, Suspense } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-// Add performance optimization
-const root = createRoot(document.getElementById("root")!);
+// Get the root element
+const rootElement = document.getElementById('root');
 
-// Add event listener for content loaded to improve perceived performance
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    root.render(
-      <StrictMode>
-        <App />
-      </StrictMode>
-    );
-  });
-} else {
+// Create and render the root
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  
   root.render(
-    <StrictMode>
-      <App />
-    </StrictMode>
+    <App />
   );
 }
 
